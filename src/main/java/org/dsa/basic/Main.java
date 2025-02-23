@@ -1,18 +1,62 @@
 package org.dsa.basic;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
         int n = 12345;
+        int x = 5;
         int count =countNumberOfDigits(n);
         int reverseNumber = reverseNumber(n);
-        List<Integer> dividors = printDivisors(n);
+        List<Integer> divisors = printDivisors(n);
         boolean isPrimeNum = checkIsPrimeNum(n);
         int gcd = findGcd(n, n);
         List<Integer> primeFactors = findPrimeFactors(n);
+        int powerOfExpo = findPowerOfExpo(n, x);
+        List<Integer> primeNumbers = finPrimeNumberUpToNumber(n);
+    }
+    // sieve of eratosthenes algorithm
+    private static List<Integer> finPrimeNumberUpToNumber(int n) {
+        List<Integer> list = new ArrayList<>();
+
+        // using sieve of eratosthenes  TC : O(log of log N)
+        int[] arr = new int[n + 1];
+        Arrays.fill(arr, 1);
+        for(int i = 2; i <= n; i++){ // for optimising we can i <=n to i * i <= n
+            if(arr[i] == 1){
+                list.add(i);
+                for(int j = i * 2; j <= n; j = j+i){ // for optimising we can j = i * i
+                    arr[j] = 0;
+                }
+            }
+        }
+
+        return list;
+    }
+
+    private static int findPowerOfExpo(int x, int y) {
+
+        int ans = 1;
+        // solution 1 TC O(X)
+//        for(int i = 1; i <= y; i++){
+//            ans = ans * x;
+//        }
+
+        // solution 2 TC O(log 2 y)
+        while(y > 0){
+            if(y % 10 == 1){
+                ans = ans * x;
+                y = y - 1;
+            }else{
+                y = y / 2;
+                x = x * x;
+            }
+        }
+
+        return ans;
     }
 
     private static List<Integer> findPrimeFactors(int n) {

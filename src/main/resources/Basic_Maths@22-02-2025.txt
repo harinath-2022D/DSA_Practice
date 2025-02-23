@@ -15,3 +15,7 @@
 => GCD/HCF Euclidean Algorithm states gcd(a, b) = gcd((a-b),b);
 
 => prime factors of a number
+
+=> power of exponentiation
+
+=> sieve of eratosthenes
