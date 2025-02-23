@@ -11,3 +11,7 @@
 => print all divisors of a number
 
 => prime number -> exactly 2 factors
+
+=> GCD/HCF Euclidean Algorithm states gcd(a, b) = gcd((a-b),b);
+
+=> prime factors of a number

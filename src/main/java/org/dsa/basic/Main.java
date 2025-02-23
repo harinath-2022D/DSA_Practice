@@ -11,6 +11,42 @@ public class Main {
         int reverseNumber = reverseNumber(n);
         List<Integer> dividors = printDivisors(n);
         boolean isPrimeNum = checkIsPrimeNum(n);
+        int gcd = findGcd(n, n);
+        List<Integer> primeFactors = findPrimeFactors(n);
+    }
+
+    private static List<Integer> findPrimeFactors(int n) {
+        List<Integer> list = new ArrayList<>();
+        // TC O(sqrt(N) * log(N))
+        for(int i=2; i*i <= n; i++){
+            if(n % i == 0){
+                list.add(i);
+                while(n % i == 0){
+                    n = n / i;
+                }
+            }
+        }
+        if(n != 1) list.add(n);
+        return list;
+    }
+
+    private static int findGcd(int n1, int n2) {
+        // solution 1 TC O(min(n1,n2))
+        int hcf = 1;
+//        for(int i =2; i <= Math.min(n1,n2); i++){
+//            if((n1 % i == 0) && (n2 % i == 0)){
+//                hcf = i;
+//            }
+//        }
+//        return hcf;
+
+        // solution 2 TC: O(log pi (min(n1, n2)))
+        while(n1 > 0 && n2 > 0){
+            if(n1 > n2) n1 = n1 % n2;
+            else n2 = n2 % n1;
+        }
+        if(n1 == 0) return n2;
+        return n2;
     }
 
     private static boolean checkIsPrimeNum(int n) {
