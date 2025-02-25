@@ -8,7 +8,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         int n = 12345;
-        int x = 5;
+        int x = 25;
         int count =countNumberOfDigits(n);
         int reverseNumber = reverseNumber(n);
         List<Integer> divisors = printDivisors(n);
@@ -17,7 +17,32 @@ public class Main {
         List<Integer> primeFactors = findPrimeFactors(n);
         int powerOfExpo = findPowerOfExpo(n, x);
         List<Integer> primeNumbers = finPrimeNumberUpToNumber(n);
+        List<Integer> primeFactorsSPF = findPrimeFactorsUsingSieveOfEroto(x);
+        primeFactorsSPF.stream().forEach(System.out::println);
     }
+    private static List<Integer> findPrimeFactorsUsingSieveOfEroto(int n) { // TC O(N log of log N) + O(log base 2 N)
+        List<Integer> list = new ArrayList<>();
+
+        int[] spf = new int[n+1];
+        for(int i = 0; i <= n; i++){
+            spf[i] = i;
+        }
+        for(int i=2; i*i <= n; i++){
+            for(int j = i*i; j<=n; j+=i){
+                if(spf[j] == j){
+                    spf[j] = i;
+                }
+            }
+        }
+
+        while(n != 1){
+            list.add(spf[n]);
+            n= n/spf[n];
+        }
+
+        return list;
+    }
+
     // sieve of eratosthenes algorithm
     private static List<Integer> finPrimeNumberUpToNumber(int n) {
         List<Integer> list = new ArrayList<>();

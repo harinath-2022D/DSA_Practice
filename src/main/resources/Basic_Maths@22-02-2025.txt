@@ -19,3 +19,7 @@
 => power of exponentiation
 
 => sieve of eratosthenes
+
+=> count prime numbers in a given range for better TC use sieve of eratosthenes
+
+=> smallest prime factorization
