@@ -1,0 +1,16 @@
+1) Remove duplicates from sorted Array
+2)Rotate Array
+3)Union of two sorted arrays
+4)Intersection of two sorted arrays
+5)Move zeros to the end in a array
+6)Find missing number in array
+7)Maximum Consecutive 1s in Array
+8)Find the element that appears one in array and other are twice => use XOR for optimal
+
+9) Find the longest sub array length with sum k
+10) 2 Sum problem
+11) Sort array of 0,1,2 Use Dutch National flag algorithm
+12) Majority Element means appearance should be more than n/2 times use Moore's voting algorithm
+13) Kadane's algorithm Maximum SubArray Sum
+14) Re Arrange Array
+15) Next Permutation
