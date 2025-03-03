@@ -15,3 +15,4 @@
 14) Re Arrange Array
 15) Next Permutation
 16) Leaders in Array
+17) Longest Consecutive Sequence in Array
