@@ -47,7 +47,7 @@ public class LinkedLists {
 
         temp.next = null;
     }
-    
+
     public void remove(int pos) {
         if (head == null || pos < 0)
             return;
@@ -68,4 +68,16 @@ public class LinkedLists {
         }
     }
 
+    // https://leetcode.com/problems/delete-node-in-a-linked-list/
+    public void deleteNode(Node node) {
+        if(node == null) return;
+
+        while(node.next.next != null){
+            node.data = node.next.data;
+            node = node.next;
+        }
+
+        node.data = node.next.data;
+        node.next = null;
+    }
 }
