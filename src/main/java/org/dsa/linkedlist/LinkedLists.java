@@ -1,30 +1,39 @@
 package org.dsa.linkedlist;
+class ListNode {
+    Object data;
+    ListNode next;
+
+    public ListNode(Object data, ListNode next){
+        this.data = data;
+        this.next = next;
+    }
+}
 
 public class LinkedLists {
-    private Node head;
+    private ListNode head;
 
     public LinkedLists(Object data){
-        this.head = new Node(data, null);
+        this.head = new ListNode(data, null);
     }
 
     public void addNode(Object data){
         if(head == null){
-            head = new Node(data, null);
+            head = new ListNode(data, null);
             
         }else{
-            Node temp = head;
+            ListNode temp = head;
 
             while(temp.next != null){
                 temp = temp.next;
             }
-            temp.next = new Node(data, null);
+            temp.next = new ListNode(data, null);
         }
     }
 
     public void printList(){
         if(head == null) System.out.println("List is empty");
 
-        Node temp = head;
+        ListNode temp = head;
 
         while(temp != null){
             System.out.print(temp.data.toString() + " -> ");
@@ -39,7 +48,7 @@ public class LinkedLists {
             head = null; return;
         }
 
-        Node temp = head;
+        ListNode temp = head;
 
         while(temp.next.next != null){
             temp = temp.next;
@@ -57,7 +66,7 @@ public class LinkedLists {
             return;
         }
 
-        Node temp = head;
+        ListNode temp = head;
 
         for (int i = 0; i < pos - 1 && temp != null; i++) {
             temp = temp.next;
@@ -79,5 +88,30 @@ public class LinkedLists {
 
         node.data = node.next.data;
         node.next = null;
+    }
+
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        int totalLen = 0;
+
+        ListNode temp = head;
+
+        while(temp != null){
+            totalLen++;
+            temp = temp.next;
+        }
+
+        if(totalLen == n) return head.next;
+        int targetIdx = totalLen - n;
+
+        temp = head;
+        int currPos = 1;
+        while(currPos < targetIdx){
+            temp = temp.next;
+            currPos++;
+        }
+
+        temp.next = temp.next.next;
+
+        return head;
     }
 }
